@@ -5,5 +5,5 @@ author: io.github.izdabait
 description: xSpleef, originally made for AYM: A lightweight spleef plugin.
 commands:
   spleef:
-    description: Help or reload for ElytraRoofPatch
+    description: Help or reload for xSpleef
     usage: /<command>
