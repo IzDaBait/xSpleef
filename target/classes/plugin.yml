@@ -1,9 +1,9 @@
 name: xSpleef
 main: io.github.izdabait.pl.Main
-version: 0.0.1-SNAPSHOT
+version: 0.0.2-SNAPSHOT
 author: io.github.izdabait
 description: xSpleef, originally made for AYM: A lightweight spleef plugin.
 commands:
   spleef:
-    description: Help or reload for xSpleef
+    description: xSpleef main command
     usage: /<command>
