@@ -5,6 +5,8 @@
 #  _>  < ___/ / /_/ / /  __/  __/ __/  
 # /_/|_|/____/ .___/_/\___/\___/_/     
 #           /_/                        
+config-version: 1
+# ^^^ Don't change unless updating
 
 # xSpleef world name (recommended to use this plugin alongside MVTP or through bungeecord)
 worldname: "spleef"
