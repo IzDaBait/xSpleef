@@ -11,7 +11,6 @@ import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.event.Event;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEvent;
@@ -38,45 +37,46 @@ public class Main extends JavaPlugin implements Listener {
         Player p = e.getPlayer();
     }
     
-	public void onCommand(CommandSender sender, Command cmd, String label, String[] args, ArrayList<UUID> accepting) {
+    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		double cversion = 1;
-		if (args.length == 1 && args[0].equalsIgnoreCase("join")) {
-			Player p= (Player) sender;
-			if (accepting.contains(p.getUniqueId())){
-				sender.sendMessage(ChatColor.GREEN + "xSpleef > " + ChatColor.DARK_RED + "You are already accepting spleef games. Typle '/spleef leave' to leave.");
-	            return;
-	        } else {
-				accepting.add(p.getUniqueId());
-				sender.sendMessage(ChatColor.GREEN + "xSpleef > Joined the waiting list! When enough players are on the list type '/spleef go' to begin!");
-	        }
-		}
-		if (args.length == 1 && args[0].equalsIgnoreCase("leave")) {
-			Player p= (Player) sender;
-			accepting.add(p.getUniqueId());
-			if (accepting.contains(p.getUniqueId())){
-				accepting.remove(p.getUniqueId());
-				sender.sendMessage(ChatColor.GREEN + "xSpleef > Left the waiting list!");
-	        } else {
-	        	sender.sendMessage(ChatColor.GREEN + "xSpleef > " + ChatColor.DARK_RED + "You are not currently accepting spleef games.");
-				return;
-	        }
-		}
 		if (args.length == 1 && args[0].equalsIgnoreCase("go")) {
 			Player p= (Player) sender;
 			begin(p.getPlayer(), cversion, this.getConfig());
+			return true;
 		}
-		if (!sender.isOp())
-			return; 
 		if (args.length == 0 || (args.length == 1 && args[0].equalsIgnoreCase("help"))) {
-		  sender.sendMessage(ChatColor.GREEN + "Your server is running xSpleef v" + this.getDescription().getVersion() + " by IzDaBait");
-		  return;
+		  sender.sendMessage(ChatColor.GREEN + "This server is running xSpleef v" + this.getDescription().getVersion() + " by IzDaBait");
+		  return true;
 		} 
 		if (args.length == 1 && args[0].equalsIgnoreCase("reload")) {
+			if (!sender.isOp()) return false; 
 			this.reloadConfig();
 			sender.sendMessage(ChatColor.GREEN + "Successfully reloaded the config!");
-			return;
+			return true;
 		} 
-		return;
+		if (args.length == 1 && args[0].equalsIgnoreCase("join")) {
+			Player p= (Player) sender;
+			if (accepting.contains(p.getUniqueId())){
+				sender.sendMessage(ChatColor.GREEN + "xSpleef > " + ChatColor.DARK_RED + "You are already accepting spleef games. Type '/spleef leave' to leave.");
+				return true;
+			} else {
+				accepting.add(p.getUniqueId());
+				sender.sendMessage(ChatColor.GREEN + "xSpleef > Joined the waiting list! When enough players are on the list type '/spleef go' to begin!");
+				return true;
+			}
+		}
+		if (args.length == 1 && args[0].equalsIgnoreCase("leave")) {
+			Player p= (Player) sender;
+			if (accepting.contains(p.getUniqueId())){
+				accepting.remove(p.getUniqueId());
+				sender.sendMessage(ChatColor.GREEN + "xSpleef > Left the waiting list!");
+				return true;
+	        } else {
+	        	sender.sendMessage(ChatColor.GREEN + "xSpleef > " + ChatColor.DARK_RED + "You are not currently accepting spleef games.");
+	        	return true;
+	        }
+		}
+		return false;
 	}
 	  
     @Override 
@@ -97,9 +97,10 @@ public class Main extends JavaPlugin implements Listener {
     public void begin(Player p, double cversion, FileConfiguration config) {
     	if (config.getInt("config-version") != cversion) p.sendMessage(ChatColor.RED + "Looks like your config is out of date. Please update it to ensure there are no bugs.");
     	build(config);
+    	
     }
     
-    public void build(FileConfiguration config) {
+    public boolean build(FileConfiguration config) {
     	World world = Bukkit.getWorld(config.getString("worldname"));
     	for (int x = (config.getInt("p-x1")); x <= (config.getInt("p-x2")); x++) {
     		for (int y = (config.getInt("p-ylevel")); y <= (config.getInt("p-ylevel") + config.getInt("p-thickness") - 1); y++) {
@@ -108,5 +109,6 @@ public class Main extends JavaPlugin implements Listener {
     			}
     		}
     	}
+    return true;
     }
 }
