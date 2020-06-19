@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>xyz.8b8t.bait.plugins</groupId>
   <artifactId>xSpleef</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>0.0.1b</version>
   <name>xSpleef</name>
   <description>A lightweight spleef plugin for 1.13+ Servers</description>
   <build>
