@@ -5,7 +5,7 @@
 #  _>  < ___/ / /_/ / /  __/  __/ __/  
 # /_/|_|/____/ .___/_/\___/\___/_/     
 #           /_/                        
-config-version: 1
+config-version: 3
 # ^^^ Don't change unless updating
 
 # xSpleef world name (recommended to use this plugin alongside MVTP or through bungeecord)
@@ -21,6 +21,16 @@ z1: -50
 x2: 50
 y2: 110
 z2: 50
+
+# Messages
+# Format: xSpleef > {player} {message}
+broadcastloss: true
+executewincommand: true
+executelosecommand: false
+losemessage: "Died"
+winmessage: "Just won!"
+wincommand: "eco give {player} 1000"
+losecommand: "eco give {player} 100"
 
 # This is the basic snow platform. It is a quadrilateral which can be multiple blocks thick. Keep the thickness at 1
 # for a comfortable game. This platform will regenerate each game.
