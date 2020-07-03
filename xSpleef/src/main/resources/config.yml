@@ -1,0 +1,88 @@
+# xSpleef originally coded by Bait#8888 for AYM
+#          _____       __          ____
+#    _  __/ ___/____  / /__  ___  / __/
+#   | |/_/\__ \/ __ \/ / _ \/ _ \/ /_  
+#  _>  < ___/ / /_/ / /  __/  __/ __/  
+# /_/|_|/____/ .___/_/\___/\___/_/     
+#           /_/                        
+config-version: 3
+# ^^^ Don't change unless updating
+
+# xSpleef world name (recommended to use this plugin alongside MVTP or through bungeecord)
+worldname: "spleef"
+
+# Arena boundaries. This is the large cubic area around the arena which is protected from grief and allows spectators
+# The spleef platform should be inside this. Default settings are assuming a 100x100 area to be protected around 0 0
+# first position
+x1: -50
+y1: 90
+z1: -50
+# second position
+x2: 50
+y2: 110
+z2: 50
+
+# Messages
+# Format: xSpleef > {player} {message}
+broadcastloss: true
+executewincommand: true
+executelosecommand: false
+losemessage: "Died"
+winmessage: "Just won!"
+
+# commands are not yet implemented they will be in future versions
+wincommand: "eco give {player} 1000"
+losecommand: "eco give {player} 100"
+
+# This is the basic snow platform. It is a quadrilateral which can be multiple blocks thick. Keep the thickness at 1
+# for a comfortable game. This platform will regenerate each game.
+enable-platform: true
+# first position
+p-x1: -15
+p-z1: -15
+# second position
+p-x2: 15
+p-z2: 15
+
+# initial y level. new layers will be built below this if enabled.
+p-ylevel: 100
+p-thickness: 1
+
+# if you would like to have multiple platforms specify below. repeat-amount is how many more platforms you want
+# repeat-spacing is how many blocks in between the platforms (>2 recommended). It will build platforms below the main one.
+# for repeat-spacing make sure the number is 1 larger than the amount of blocks you want in between (eg: 3 will make 2 blocks in between each layer)
+repeat: false
+repeat-amount: 2
+repeat-spacing: 3
+
+# spawn coordinates of player. If there are just 2 players it will use the first 2 coordinates and so on.
+# currently we separated all the coordinate positions to make it more customizable. However, we will add
+# an ability to randomly teleport the players on the platform soon.
+
+spawn-cords:
+
+# keep spawnylevel at least 1 above p-ylevel.
+spawnylevel: 101
+spawn1x: -13
+spawn1z: -13
+
+spawn2x: -13
+spawn2z: 13
+
+spawn3x: 13
+spawn3z: -13
+
+spawn4x: 13
+spawn4z: 13
+
+spawn5x: 6
+spawn5z: 6
+
+spawn6x: -6
+spawn6z: -6
+
+spawn7x: -6
+spawn7z: 6
+
+spawn8x: 6
+spawn8z: -6

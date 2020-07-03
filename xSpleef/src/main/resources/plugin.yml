@@ -1,0 +1,14 @@
+name: xSpleef
+main: io.github.izdabait.pl.Main
+version: 1.0.0-RELEASE
+author: io.github.izdabait
+description: xSpleef, A lightweight spleef plugin originally made for AYM.
+api-version: 1.13
+commands:
+  spleef:
+    description: xSpleef main command
+permissions:
+  spleef.*:
+    description: xSpleef Admin Permission
+  spleef.bypass:
+    description: xSpleef Bypass the breaking of blocks during and near a game
